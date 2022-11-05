@@ -11,7 +11,7 @@ class StandardController extends Controller
 {
   public function index()
   {
-
+    return Inertia::render('Testing');
   }
 
   public function create(Request $request)

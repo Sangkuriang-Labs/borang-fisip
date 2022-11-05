@@ -18,9 +18,8 @@ class Sub extends Model
     return $this->belongsTo(Standard::class);
   }
 
-  public function content()
+  public function contents()
   {
-    return $this->hasOne(Content::class);
+    return $this->hasMany(Content::class);
   }
-
 }
