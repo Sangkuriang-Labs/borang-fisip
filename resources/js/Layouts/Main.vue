@@ -26,10 +26,12 @@
           </div>
           <div class="hidden md:block">
             <div class="ml-4 flex items-center md:ml-6">
-              <ButtonIcon class="mr-3">
-                <PlusIcon class="h-5 w-5" />
-                Tambahkan Dokumen
-              </ButtonIcon>
+              <Link href="/standards/create">
+                <ButtonIcon class="mr-3">
+                  <PlusIcon class="h-5 w-5" />
+                  Tambahkan Dokumen
+                </ButtonIcon>
+              </Link>
               <!-- Profile dropdown -->
               <Menu as="div" class="relative ml-3">
                 <div>

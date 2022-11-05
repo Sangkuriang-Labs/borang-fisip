@@ -1,8 +1,7 @@
 <template>
   <Head>
-    <title>Testing App</title>
+    <title>Tambah Standards</title>
   </Head>
-  <h1>Testing Commit 2</h1>
 </template>
 
 <script setup>
@@ -10,9 +9,11 @@ import { Head } from "@inertiajs/inertia-vue3";
 </script>
 
 <script>
-import Main from "../Layouts/Main.vue";
+import Main from "../../Layouts/Main.vue";
 
 export default {
   layout: Main,
 };
 </script>
+
+<style scoped></style>

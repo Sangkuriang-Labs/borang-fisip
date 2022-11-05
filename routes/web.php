@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\StandardController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-  return \Inertia\Inertia::render('Testing');
+  return \Illuminate\Support\Facades\Redirect::to('/dashboard');
 });
+
+Route::get('/dashboard', function () {
+  return Inertia::render('Testing');
+});
+
+Route::resource('/standards', StandardController::class)->only('create', 'index');
 
