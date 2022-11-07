@@ -11,11 +11,16 @@ class Content extends Model
   use HasFactory, HasUuids;
 
   protected $fillable = [
-    'sub_id', 'description', 'content'
+    'sub_id', 'user_id', 'description', 'content'
   ];
 
   public function sub()
   {
     $this->belongsTo(Sub::class);
+  }
+
+  public function user()
+  {
+    return $this->belongsTo(User::class);
   }
 }

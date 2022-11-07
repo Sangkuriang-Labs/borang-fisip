@@ -32,4 +32,9 @@ class User extends Authenticatable
   {
     return $this->belongsTo(Major::class, 'major_id', 'id');
   }
+
+  public function contents()
+  {
+    return $this->hasMany(Content::class, 'user_id', 'id');
+  }
 }

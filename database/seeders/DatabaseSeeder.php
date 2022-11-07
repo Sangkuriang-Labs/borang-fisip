@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
       StandardSeeder::class,
       SubSeeder::class,
       MajorSeeder::class,
+      UserSeeder::class,
+      ContentSeeder::class
     ]);
   }
 }
