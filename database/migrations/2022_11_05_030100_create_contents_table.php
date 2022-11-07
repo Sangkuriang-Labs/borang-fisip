@@ -10,6 +10,7 @@ return new class extends Migration {
     Schema::create('contents', function (Blueprint $table) {
       $table->uuid('id')->primary();
       $table->foreignUuid('sub_id')->constrained()->cascadeOnDelete();
+      $table->foreignUuid('user_id')->constrained()->cascadeOnDelete();
       $table->string('description');
       $table->text('content');
       $table->timestamps();
