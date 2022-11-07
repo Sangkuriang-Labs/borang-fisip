@@ -16,11 +16,11 @@ class Content extends Model
 
   public function sub()
   {
-    $this->belongsTo(Sub::class);
+    $this->belongsTo(Sub::class, 'sub_id', 'id');
   }
 
   public function user()
   {
-    return $this->belongsTo(User::class);
+    return $this->belongsTo(User::class, 'user_id', 'id');
   }
 }
