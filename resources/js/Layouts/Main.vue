@@ -27,8 +27,8 @@
           <div class="hidden md:block">
             <div class="ml-4 flex items-center md:ml-6">
               <Link
-                href="/standards/create"
-                v-if="!$page.url.includes('/standards/create')"
+                v-if="!$page.url.includes('/contents/create')"
+                href="/contents/create"
               >
                 <ButtonIcon class="mr-3">
                   <PlusIcon class="h-5 w-5" />
@@ -172,7 +172,7 @@ const user = {
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard" },
-  { name: "Standards", href: "/standards" },
+  { name: "Standards", href: "/contents" },
 ];
 
 const userNavigation = [
