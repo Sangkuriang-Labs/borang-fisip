@@ -65,7 +65,7 @@ const selectedStandardId = ref("");
 watch(selectedStandardId, () => {
   form.reset("subId");
   Inertia.get(
-    "/standards/create",
+    "/contents/create",
     {
       standard: selectedStandardId.value,
     },

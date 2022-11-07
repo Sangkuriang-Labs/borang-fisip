@@ -35,11 +35,10 @@ class ContentController extends Controller
       ];
     });
 
-    return Inertia::render('Standards/Create', [
+    return Inertia::render('Contents/Create', [
       'standards' => $standards,
       'subs' => $subs
     ]);
-
   }
 
   public function store(Request $request)
