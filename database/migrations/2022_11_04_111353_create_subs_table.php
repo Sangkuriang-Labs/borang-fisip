@@ -13,10 +13,10 @@ return new class extends Migration {
   public function up()
   {
     Schema::create('subs', function (Blueprint $table) {
-      $table->id();
+      $table->uuid('id')->primary();
+      $table->foreignUuid('standard_id')->constrained()->cascadeOnDelete();
       $table->string('number')->unique();
       $table->string('name');
-      $table->foreignId('standard_id');
       $table->timestamps();
     });
   }

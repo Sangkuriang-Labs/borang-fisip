@@ -16,26 +16,6 @@ class StandardController extends Controller
 
   public function create(Request $request)
   {
-    $standards = Standard::all()->map(function ($standard) {
-      return [
-        'value' => $standard->id,
-        'display' => "$standard->number - $standard->name",
-      ];
-    });
-
-    $subs = Sub::when($request->get('standardId'), function ($query) use ($request) {
-      return $query->where('standard_id', $request->get('standardId'));
-    })->get()->map(function ($sub) {
-      return [
-        'value' => $sub->id,
-        'display' => "$sub->number - $sub->name",
-      ];
-    });;
-
-    return Inertia::render('', [
-      'standards' => $standards,
-      'subs' => $subs
-    ]);
   }
 
   public function store(Request $request)

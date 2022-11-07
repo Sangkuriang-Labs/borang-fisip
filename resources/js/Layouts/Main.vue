@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-full">
-    <Disclosure v-slot="{ open }" as="nav" class="bg-gray-800">
+    <Disclosure v-slot="{ open }" as="nav" class="z-10 bg-gray-800">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
           <div class="flex items-center">
@@ -26,7 +26,10 @@
           </div>
           <div class="hidden md:block">
             <div class="ml-4 flex items-center md:ml-6">
-              <Link href="/standards/create">
+              <Link
+                href="/standards/create"
+                v-if="!$page.url.includes('/standards/create')"
+              >
                 <ButtonIcon class="mr-3">
                   <PlusIcon class="h-5 w-5" />
                   Tambahkan Dokumen
