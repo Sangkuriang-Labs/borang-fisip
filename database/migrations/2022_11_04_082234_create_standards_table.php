@@ -5,26 +5,16 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-  /**
-   * Run the migrations.
-   *
-   * @return void
-   */
   public function up()
   {
     Schema::create('standards', function (Blueprint $table) {
-      $table->id();
+      $table->uuid('id')->primary();
       $table->string('number')->unique();
       $table->string('name');
       $table->timestamps();
     });
   }
 
-  /**
-   * Reverse the migrations.
-   *
-   * @return void
-   */
   public function down()
   {
     Schema::dropIfExists('standards');
