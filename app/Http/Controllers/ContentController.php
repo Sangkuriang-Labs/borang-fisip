@@ -27,7 +27,7 @@ class ContentController extends Controller
     $subs = Sub::when($request->get('standard'), function ($query) use ($request) {
       return $query->where('standard_id', $request->get('standard'));
     }, function ($query) {
-      return $query;
+      return $query->where('name', '');
     })->get()->map(function ($sub) {
       return [
         'value' => $sub->id,
