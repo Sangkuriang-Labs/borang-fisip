@@ -1,5 +1,5 @@
 <template>
-  <div class="relative mt-1 rounded-md shadow-sm">
+  <div class="relative mt-1 rounded-md">
     <input
       :type="type"
       :name="id"
@@ -19,9 +19,6 @@
       <ExclamationCircleIcon class="h-5 w-5 text-red-500" aria-hidden="true" />
     </div>
   </div>
-  <p v-if="error" class="mt-2 text-sm text-red-600" id="email-error">
-    {{ error }}
-  </p>
 </template>
 
 <script setup>
