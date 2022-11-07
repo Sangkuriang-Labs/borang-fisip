@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreContentRequest;
 use App\Models\Content;
 use App\Models\Standard;
 use App\Models\Sub;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -41,8 +43,15 @@ class ContentController extends Controller
     ]);
   }
 
-  public function store(Request $request)
+  public function store(StoreContentRequest $request)
   {
+    $path = "";
+    if ($request->hasFile('content')) {
+      $path = $request->file('content')->store('content', 'public');
+    }
+    Content::create(['sub_id' => $request->get('subId'), 'user_id' => User::first()->id, 'description' => $request->get('description'), 'content' => $path]);
+
+    return \Redirect::route('contents.index')->with('notifications', 'Menambahkan dokumen baru.');
   }
 
   public function show(Content $content)
