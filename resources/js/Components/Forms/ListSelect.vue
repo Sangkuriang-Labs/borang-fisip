@@ -8,7 +8,12 @@
     :value="modelValue"
     @input="$emit('update:modelValue', $event.target.value)"
   >
-    <option v-for="d in data" :key="d.value" :value="d.value">
+    <option
+      v-for="d in data"
+      :key="d.value"
+      :selected="d.value === modelValue"
+      :value="d.value"
+    >
       {{ d.display }}
     </option>
   </select>
