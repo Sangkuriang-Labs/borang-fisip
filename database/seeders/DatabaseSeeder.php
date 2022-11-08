@@ -14,7 +14,8 @@ class DatabaseSeeder extends Seeder
       SubSeeder::class,
       MajorSeeder::class,
       UserSeeder::class,
-      ContentSeeder::class
+      ContentSeeder::class,
+      HistorySeeder::class
     ]);
   }
 }
