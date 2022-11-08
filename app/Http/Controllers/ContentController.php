@@ -7,6 +7,7 @@ use App\Models\Content;
 use App\Models\Standard;
 use App\Models\Sub;
 use App\Models\User;
+use Cache;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Redirect;
@@ -15,12 +16,12 @@ class ContentController extends Controller
 {
   public function index(Request $request)
   {
-    $standards = Standard::all()->map(function ($standard) {
+    $standards = Cache::rememberForever('standards', fn() => Standard::all()->map(function ($standard) {
       return [
         'value' => $standard->id,
         'display' => "$standard->number - $standard->name",
       ];
-    });
+    }));
 
     $subs = Sub::with(['contents', 'standard'])->has('contents')->whereHas('contents', function ($content) {
       return $content->with('user')->whereHas('user', function ($user) {
@@ -34,19 +35,20 @@ class ContentController extends Controller
       return $sub->whereHas('standard', function ($standard) {
         return $standard->where('id', Standard::first()->id);
       });
-    })->get();
+    })->orderBy('number')->get();
 
     return Inertia::render('Contents/Index', compact('standards', 'subs'));
   }
 
   public function create(Request $request)
   {
-    $standards = Standard::all()->map(function ($standard) {
+    $standards = Cache::rememberForever('standards', fn() => Standard::all()->map(function ($standard) {
       return [
         'value' => $standard->id,
         'display' => "$standard->number - $standard->name",
       ];
-    });
+    }));
+
 
     $subs = Sub::when($request->get('standard'), function ($query) use ($request) {
       return $query->where('standard_id', $request->get('standard'));
@@ -64,10 +66,12 @@ class ContentController extends Controller
 
   public function store(StoreContentRequest $request)
   {
-    $path = "";
+    $data = Sub::with('standard')->where('id', $request->get('subId'))->first();
+
+    $path = time() . "_" . "Standard" . "_" . $data->standard->number . "_" . "Sub" . "_" . $data->number . "_" . str_replace(" ", "_", User::first()->name) . "." . $request->file('content')->extension();
 
     if ($request->hasFile('content')) {
-      $path = $request->file('content')->store('content', 'public');
+      $request->file('content')->store('content', 'public');
     }
 
     Content::create(['sub_id' => $request->get('subId'), 'user_id' => User::first()->id, 'description' => $request->get('description'), 'content' => $path]);
