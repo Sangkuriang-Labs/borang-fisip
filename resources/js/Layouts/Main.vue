@@ -28,7 +28,7 @@
             <div class="ml-4 flex items-center md:ml-6">
               <Link
                 v-if="!$page.url.includes('/contents/create')"
-                href="/contents/create"
+                href="/standards/create"
               >
                 <ButtonIcon class="mr-3">
                   <PlusIcon class="h-5 w-5" />
@@ -222,7 +222,7 @@ const user = {
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard" },
-  { name: "Standards", href: "/contents" },
+  { name: "Standards", href: "/standards" },
 ];
 
 const userNavigation = [

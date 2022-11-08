@@ -157,7 +157,7 @@ watch(selectedStandardId, () => {
   form.reset();
   form.clearErrors();
   Inertia.get(
-    "/contents/create",
+    "/standards/create",
     {
       standard: selectedStandardId.value,
     },
@@ -172,7 +172,7 @@ const form = useForm({
 });
 
 const submitForm = () => {
-  form.post("/contents", {
+  form.post("/standards", {
     forceFormData: true,
   });
 };

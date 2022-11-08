@@ -13,4 +13,4 @@ Route::get('/dashboard', function () {
   return Inertia::render('Testing');
 });
 
-Route::resource('/contents', ContentController::class)->only('create', 'index', 'store');
+Route::resource('/standards', ContentController::class)->only('create', 'index', 'store', 'show');
