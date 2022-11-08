@@ -23,4 +23,11 @@ class Sub extends Model
   {
     return $this->hasMany(Content::class);
   }
+
+  public function histories()
+  {
+    return $this->hasMany(History::class, 'sub_id', 'id');
+  }
+
+
 }
