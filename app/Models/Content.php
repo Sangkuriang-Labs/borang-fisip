@@ -25,6 +25,11 @@ class Content extends Model
     return $this->belongsTo(User::class, 'user_id', 'id');
   }
 
+  public function major()
+  {
+    return $this->belongsTo(Major::class, 'major_id', 'id');
+  }
+
   public function getCreatedAtAttribute($value)
   {
     return Carbon::parse($value)->diffForHumans();
