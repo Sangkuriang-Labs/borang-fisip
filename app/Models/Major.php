@@ -13,7 +13,7 @@ class Major extends Model
     'name',
   ];
 
-  public function majors()
+  public function users()
   {
     return $this->hasMany(User::class, 'major_id', 'id');
   }
