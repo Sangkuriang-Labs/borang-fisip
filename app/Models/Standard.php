@@ -10,6 +10,7 @@ class Standard extends Model
 {
   use HasFactory, HasUuids;
 
+  protected $table = "standards";
   protected $fillable = [
     'number', 'name'
   ];

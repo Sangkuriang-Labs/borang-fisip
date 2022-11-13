@@ -9,7 +9,8 @@ return new class extends Migration {
   {
     Schema::create('users', function (Blueprint $table) {
       $table->uuid('id')->primary();
-      $table->foreignUuid('major_id');
+      $table->foreignUuid('major_id')->nullable(true)->constrained()->cascadeOnDelete();
+      $table->foreignUuid('position_id')->constrained()->cascadeOnDelete();
       $table->string('name');
       $table->string('email')->unique();
       $table->timestamp('email_verified_at')->nullable();

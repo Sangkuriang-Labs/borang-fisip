@@ -9,8 +9,11 @@ Route::get('/', function () {
   return \Illuminate\Support\Facades\Redirect::to('/dashboard');
 });
 
-Route::get('/dashboard', function () {
-  return Inertia::render('Testing');
+Route::middleware(['verified', 'auth'])->group(function () {
+  Route::get('/dashboard', function () {
+    return Inertia::render('Testing');
+  });
+
+  Route::resource('/standards', ContentController::class)->only('create', 'index', 'store', 'show');
 });
 
-Route::resource('/standards', ContentController::class)->only('create', 'index', 'store', 'show');

@@ -149,6 +149,17 @@ import TextError from "@/Components/Forms/TextError.vue";
 import { PaperClipIcon } from "@heroicons/vue/solid";
 import { filesize } from "filesize";
 
+const steps = [
+  {
+    id: "Langkah 1",
+    name: "Pilih standard dan sub standard yang akan ditambahkan. Isi keterangan dokumen dan upload dokumen sesuai dengan standard dan sub standard yang telah dipilih.",
+    href: "#",
+    status: "current",
+  },
+  { id: "Langkah 2", name: "Application form", href: "#", status: "upcoming" },
+  { id: "Langkah 3", name: "Preview", href: "#", status: "upcoming" },
+];
+
 defineProps(["standards", "subs"]);
 
 const selectedStandardId = ref("");

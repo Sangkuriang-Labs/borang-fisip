@@ -65,14 +65,16 @@
                       :key="item.name"
                       v-slot="{ active }"
                     >
-                      <a
+                      <Link
                         :class="[
                           active ? 'bg-gray-100' : '',
-                          'block px-4 py-2 text-sm text-gray-700',
+                          'block w-full px-4 py-2 text-left text-sm text-gray-700',
                         ]"
+                        as="button"
+                        method="post"
                         :href="item.href"
-                        >{{ item.name }}</a
-                      >
+                        >{{ item.name }}
+                      </Link>
                     </MenuItem>
                   </MenuItems>
                 </transition>
@@ -128,10 +130,12 @@
             <DisclosureButton
               v-for="item in userNavigation"
               :key="item.name"
-              :href="item.href"
-              as="a"
+              as="div"
               class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
-              >{{ item.name }}
+            >
+              <Link :href="item.href" as="button" method="post"
+                >{{ item.name }}
+              </Link>
             </DisclosureButton>
           </div>
         </div>
@@ -225,11 +229,7 @@ const navigation = [
   { name: "Standards", href: "/standards" },
 ];
 
-const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
-];
+const userNavigation = [{ name: "Sign out", href: "/logout" }];
 
 const show = ref(true);
 </script>

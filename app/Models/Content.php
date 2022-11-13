@@ -11,6 +11,7 @@ class Content extends Model
 {
   use HasFactory, HasUuids;
 
+  protected $table = "contents";
   protected $fillable = [
     'sub_id', 'user_id', 'description', 'content'
   ];

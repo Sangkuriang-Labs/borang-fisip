@@ -10,6 +10,7 @@ class Sub extends Model
 {
   use HasFactory, HasUuids;
 
+  protected $table = "subs";
   protected $fillable = [
     'standard_id', 'number', 'name'
   ];

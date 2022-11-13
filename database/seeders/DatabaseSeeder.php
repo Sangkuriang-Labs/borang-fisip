@@ -11,10 +11,10 @@ class DatabaseSeeder extends Seeder
   {
     $this->call([
       StandardSeeder::class,
+      PositionSeeder::class,
       SubSeeder::class,
       MajorSeeder::class,
       UserSeeder::class,
-      ContentSeeder::class
     ]);
   }
 }

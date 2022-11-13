@@ -10,6 +10,8 @@
           error,
       }"
       :value="modelValue"
+      :disabled="disabled"
+      :placeholder="placeholder"
       @input="$emit('update:modelValue', $event.target.value)"
     />
     <div
@@ -24,7 +26,7 @@
 <script setup>
 import { ExclamationCircleIcon } from "@heroicons/vue/solid";
 
-defineProps(["type", "id", "modelValue", "error"]);
+defineProps(["type", "id", "modelValue", "error", "placeholder", "disabled"]);
 defineEmits(["update:modelValue"]);
 </script>
 
